@@ -1,6 +1,7 @@
 package com.micro.school.Config;
 
 import com.micro.school.DTO.StudentResponse;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,5 +12,6 @@ import java.util.List;
 public interface StudentClient {
 
     @GetMapping("/school/{school-id}")
+    @LoadBalanced
     List<StudentResponse> findAllStudentsBySchool(@PathVariable("school-id") Integer schoolId);
 }
